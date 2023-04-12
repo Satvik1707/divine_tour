@@ -53,22 +53,22 @@ export default function PlaceCreate({
   };
   let count =0;
 
-  useEffect(() => {
-
-    if (editId !== null && count <2) {
-      // console.log(data)
-      setdocRef(doc(db, "places", editId));
-      let getSingleUser = async () => {
+   useEffect(() => {
+    let isMounted = true;
+    const docRef = editId ? doc(db, "places", editId) : null;
+    const getSingleUser = async () => {
+      if (docRef) {
         const snapshot = await getDoc(docRef);
-        
-        if (snapshot.exists()&& count <2) {
+        if (isMounted && snapshot.exists()) {
           setData({ ...snapshot.data() });
         }
-      };
-      getSingleUser();
-      count++;
-    }
-  }, [editId, docRef]);
+      }
+    };
+    getSingleUser();
+    return () => {
+      isMounted = false;
+    };
+  }, [editId, db]);
 
   const handleImageChange = async(e)=>{
     const files = e.target.files;
