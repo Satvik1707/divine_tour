@@ -43,27 +43,32 @@ export default function PlaceCreate({
   };
 
   const [data, setData] = useState(initialValue);
-  const [progress, setProgress] = useState(null);
+  const [progress] = useState(null);
   const [error, setError] = useState(null);
   const [docRef, setdocRef] = useState(null);
-  const { name, location, description,images, itinerary } = data;
+  const { name, location, description,images, itinerary, price} = data;
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+  let count =0;
 
   useEffect(() => {
-    if (editId !== null) {
+
+    if (editId !== null && count <2) {
+      // console.log(data)
+      setdocRef(doc(db, "places", editId));
       let getSingleUser = async () => {
-        setdocRef(doc(db, "places", editId));
         const snapshot = await getDoc(docRef);
-        if (snapshot.exists()) {
+        
+        if (snapshot.exists()&& count <2) {
           setData({ ...snapshot.data() });
         }
       };
       getSingleUser();
+      count++;
     }
-  }, [editId,docRef]);
+  }, [editId, docRef]);
 
   const handleImageChange = async(e)=>{
     const files = e.target.files;
@@ -142,6 +147,17 @@ export default function PlaceCreate({
               value={itinerary}
               onChange={handleChange}
               placeholder="Enter package itienary"
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="description">
+            <Form.Label>Package Price</Form.Label>
+            <Form.Control
+              type="text"
+              name="price"
+              value={price}
+              onChange={handleChange}
+              placeholder="Enter package price"
               required
             />
           </Form.Group>

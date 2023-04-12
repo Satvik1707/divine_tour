@@ -48,7 +48,7 @@ export default function HospitalCreate({
   const [progress, setProgress] = useState(null);
   const [error, setError] = useState(null);
   const [docRef, setdocRef] = useState(null);
-  const { name, location, description,images,itinerary } = data;
+  const { name, location, description,images,itinerary,price } = data;
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -65,7 +65,7 @@ export default function HospitalCreate({
       };
       getSingleUser();
     }
-  }, [editId,docRef]);
+  }, [editId]);
 
   const handleImageChange = async(e)=>{
     const files = e.target.files;
@@ -143,7 +143,18 @@ export default function HospitalCreate({
               name="itinerary"
               value={itinerary}
               onChange={handleChange}
-              placeholder="Enter hospital description"
+              placeholder="Enter package itinerary"
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="description">
+            <Form.Label>Package Price</Form.Label>
+            <Form.Control
+              type="text"
+              name="price"
+              value={price}
+              onChange={handleChange}
+              placeholder="Enter package price"
               required
             />
           </Form.Group>

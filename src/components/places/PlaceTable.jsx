@@ -43,6 +43,7 @@ export default function PlaceTable({ places, setPlaces, setAddEditPlaceModal, se
           <th>ID</th>
           <th>Name</th>
           <th>Location</th>
+          <th>Price</th>
           <th>Img</th>
           <th>Description</th>
           <th>Action</th>
@@ -54,6 +55,7 @@ export default function PlaceTable({ places, setPlaces, setAddEditPlaceModal, se
             <td>{ place.id }</td>
             <td>{ place.name }</td>
             <td>{ place.location }</td>
+            <td>{ place.price }</td>
             <td><img src={ place.images[0] } alt="place img" width="100" height="auto" /></td>
             <td>{ place.description.substring(0, 10) }{ place.description.length > 10 ? "..." : null }</td>
             <td>

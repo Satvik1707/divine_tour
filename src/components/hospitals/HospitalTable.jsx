@@ -44,6 +44,7 @@ export default function HospitalTable({ hospitals, setHospitals, setAddEditHospi
           <th>ID</th>
           <th>Name</th>
           <th>Location</th>
+          <th>Price</th>
           <th>Img</th>
           <th>Description</th>
           <th>Action</th>
@@ -55,6 +56,7 @@ export default function HospitalTable({ hospitals, setHospitals, setAddEditHospi
             <td>{ hospital.id }</td>
             <td>{ hospital.name }</td>
             <td>{ hospital.location }</td>
+            <td>{ hospital.price }</td>
             <td><img src={ hospital.images[0] } alt="hospital img" width="100" height="auto" /></td>
             <td>{ hospital.description.substring(0, 10) }{ hospital.description.length > 10 ? "..." : null }</td>
             <td>
