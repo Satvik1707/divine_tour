@@ -53,19 +53,22 @@ export default function HospitalCreate({
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-
   useEffect(() => {
-    if (editId !== null) {
-      let getSingleUser = async () => {
-        setdocRef(doc(db, "hospitals", editId));
+    let isMounted = true;
+    const docRef = editId ? doc(db, "places", editId) : null;
+    const getSingleUser = async () => {
+      if (docRef) {
         const snapshot = await getDoc(docRef);
-        if (snapshot.exists()) {
+        if (isMounted && snapshot.exists()) {
           setData({ ...snapshot.data() });
         }
-      };
-      getSingleUser();
-    }
-  }, [editId]);
+      }
+    };
+    getSingleUser();
+    return () => {
+      isMounted = false;
+    };
+  }, [editId, db]);
 
   const handleImageChange = async(e)=>{
     const files = e.target.files;
