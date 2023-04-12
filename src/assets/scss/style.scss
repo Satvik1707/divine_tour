@@ -1,0 +1,110 @@
+@import url('utilities.scss');
+
+
+// color variables
+$blue: #3A78C9;
+$orange: #1cd7de;
+$red: #01959a;
+$black: #333;
+$ash: #727272;
+$white: #fff;
+$dark: #1c1c1c;
+
+// header start
+header {
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  .logo {
+    width: 170px;
+  }
+  .nav-link {
+    color: $white;
+    font-weight: 500;
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+  }
+  .nav-link:hover,
+  .nav-link:focus,
+  .show>.nav-link,
+  .nav-link.active {
+    color: $white !important;
+  }
+  .navbar-toggler {
+    border-color: $white;
+  }
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+}
+header.white-variant {
+  background: linear-gradient(to right, $orange, $red);
+}
+
+main {
+  min-height: calc(100vh - 150px);
+  display: flex;
+  align-items: center;
+}
+
+// left menu
+.left-menu {
+  .list-group-item {
+    padding: 0;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #eee;
+    a {
+      display: block;
+      padding: 14px 24px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #7E7E7E;
+    }
+    svg {
+      color: #b3b0b0;
+      width: 24px;
+      height: auto;
+    }
+  }
+  .list-group-item:hover {
+    background: $ash;
+    a {
+      color: $white;
+    }
+    svg {
+      color: #ccc;
+    }
+  }
+  .list-group-item.active {
+    background: $ash;
+    a {
+      color: $white;
+    }
+    svg {
+      color: #ccc;
+    }
+  }
+}
+// right area
+.right-area {
+  border: 1px solid #eee;
+  border-radius: 16px;
+}
+.table-btn {
+  padding: 10px 16px;
+}
+
+// footer start
+footer {
+  img {
+    max-width: 210px;
+  }
+  a:hover {
+    color: $orange;
+  }
+}
+.footer-bottom {
+  background-color: $dark;
+}
