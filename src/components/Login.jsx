@@ -53,18 +53,14 @@ export default function Login() {
 
                 <Form.Group className="mb-3" controlId="password">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="00000000" required />
+                  <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="123456" required />
                 </Form.Group>
 
-                <h5 className="text-danger">This is a demo login! Please don't input randomly inside admin panel.</h5>
                 <h5 className="text-danger">{error}</h5>
 
                 <button className={`btn bg-success w-100 ${loading ? "disabled": ''}`} type='submit'>Submit</button>
               </Form>
 
-              <p className='mt-4'>
-                <Link to="/signup" className='text-primary'>Don't have Account? <b>Signup here</b></Link>
-              </p>
             </Card.Body>
           </Card>
         </Col>
